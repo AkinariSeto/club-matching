@@ -1,5 +1,5 @@
 <?php
-    require_once "classes/User.php";
+    require_once "../classes/User.php";
 
     // create instance
     $user = new User;
@@ -7,12 +7,13 @@
 
     if($_GET['action'] == 'add') {
         $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $bio = $_POST['bio'];
-        $result = $user->save($username, $password, $email, $firstname, $lastname, $bio);
+        $email = $_POST['user_email'];
+        $password = $_POST['user_password'];
+        $firstname = $_POST['user_firstname'];
+        $lastname = $_POST['user_lastname'];
+        $bio = $_POST['user_bio'];
+        $status = $_POST['user_status'];
+        $result = $user->save($username, $password, $email, $firstname, $lastname, $bio, $status);
 
         if($result) {
             echo "<script>window.location.replace('users.php');</script>";

@@ -5,7 +5,7 @@ class Config {
     private $servername = "localhost";
     private $username = "root";
     private $password = "root";
-    private $database = "oop_practice";
+    private $database = "club_activity_matching";
 
     // create an initial variable/property for $conn
     public $conn;

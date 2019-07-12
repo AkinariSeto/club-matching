@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>add_users</title>
+    <title>Add club Interests</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -105,51 +105,27 @@
                     <div class="card mt-5">
                         <div class="card-body">
                             <div class="container">
-                                <form class="my-5" method="POST" action="user_action.php?action=add">
+                                <form class="my-5" method="POST">
                                     <div class="card-header">
-                                    <h4>Add user</h4>
+                                    <h4>Add Club Interests</h4>
                                     </div>
                                     <div class="form-group">
-                                        <label for="user" class="form-control-label">User Name</label>
-                                        <input type="user" id="user" class="form-control" name="username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="firstname" class="form-control-label">First Name</label>
-                                        <input type="user" id="firstname" class="form-control" name="user_firstname">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="user" class="form-control-label">Last Name</label>
-                                        <input type="user" id="user" class="form-control" name="user_lastname">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="form-control-label">Email</label>
-                                        <input type="email" id="email" class="form-control" name="user_email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password" class="form-control-label">Password</label>
-                                        <input type="password" id="password" class="form-control" name="user_password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirm_password" class="form-control-label">Confirm
-                                            password</label>
-                                        <input type="password" id="confirm_password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="bio" class="form-control-label">Bio</label>
-                                        <br>
-                                        <textarea type="text" name="user_bio" id="bio" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="status" class="form-control-label">Status</label>
-                                        <br>
-                                        <select  name="user_status" id="status" class="form-control">
-                                            <option value="admin">Admin</option>
-                                            <option value="user">User</option>
-                                        </select>
+                                        <label for="ci" class="form-control-label">Club Interests Name</label>
+                                        <input type="user" id="ci" class="form-control" name="ci_name">
                                     </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
-                                        User</button>
+                                        Club Interests</button>
                                 </form>
+                                <?php
+                                    if(isset($_POST['register'])){
+                                        $ciname = $_POST['ci_name'];
+                                        session_start();
+                                        require_once 'classes/Club_interests.php';
+
+                                        //call the function to login
+                                        $result = save_club_interests($ciname);
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </div>

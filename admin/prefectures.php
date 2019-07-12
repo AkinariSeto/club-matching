@@ -1,7 +1,7 @@
 <?php
-require_once "../classes/User.php";
+require_once "../classes/Prefecture.php";
  // create the instance/object
- $users = new User;
+ $prefectures = new Prefecture;
  ?>
 
 
@@ -10,7 +10,7 @@ require_once "../classes/User.php";
 <html lang="en">
 
 <head>
-    <title>users</title>
+    <title>Prefectures</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -93,16 +93,9 @@ require_once "../classes/User.php";
                             <div class="dorne-search-btn">
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
                             </div>
-                            <!-- Signin Register btn -->
+                            <!-- Signin btn -->
                             <div class="dorne-signin-btn">
-                                <a href="../users/register.php">Register</a>
-                            </div>
-                            <div class="dorne-signin-btn">
-                                <a href="../users/login.php">Sign in</a>
-                            </div>
-                            <!-- sign out btn -->
-                            <div class="dorne-signin-btn">
-                                <a href="../users/logout.php">Sign out</a>
+                                <a href="#">Sign in or Register</a>
                             </div>
                             <!-- Add listings btn -->
                             <div class="dorne-add-listings-btn">
@@ -124,35 +117,27 @@ require_once "../classes/User.php";
                         <div>
                             <table class="table table-striped table-borderless table-hover my-5">
                                 <div class="card-header">
-                                    <h4>Display User</h4>
+                                    <h4>Display Prefecture</h4>
                                 </div>
                                 <thead>
-                                    <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Bio</th>
+                                    <th>Prefecture ID</th>
+                                    <th>Prefecture Name</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <?php
-                                $get_users = $users->selectAll();
+                                $get_prefectures = $prefectures->selectAll();
 
-                                if($get_users) {
-                                    foreach($get_users as $key => $row) {
-                                        $id = $row['user_id'];
+                                if($get_prefectures) {
+                                    foreach($get_prefectures as $key => $row) {
+                                        $id = $row['prefecture_id'];
                                         echo "<tr>";
-                                        echo "<td>" .$row['user_id']."</td>";
-                                        echo "<td>" .$row['username']."</td>";
-                                        echo "<td>" .$row['email']."</td>";
-                                        echo "<td>" .$row['firstname']."</td>";
-                                        echo "<td>" .$row['lastname']."</td>";
-                                        echo "<td>" .$row['bio']."</td>";
+                                        echo "<td>" .$row['prefecture_id']."</td>";
+                                        echo "<td>" .$row['prefecture_name']."</td>";
                                         echo "<td>
-                                        <a href='edit_user.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_prefecture.php?club_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
-                                    <a href='user_action.php?action=delete&user_id=<?php echo $id; ?>'
+                                    <a href='prefecture_action.php?action=delete&prefecture_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'
                                         onclick='return confirm("Are you sure you want to delete?");'>Delete</a>
                                     </td>

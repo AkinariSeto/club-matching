@@ -107,23 +107,24 @@
                             <div class="container">
                                 <form class="my-5" method="POST">
                                     <div class="card-header">
-                                    <h4>Add user</h4>
+                                    <h4>Add Schools</h4>
                                     </div>
                                     <div class="form-group">
-                                        <label for="user" class="form-control-label">User Name</label>
-                                        <input type="user" id="user" class="form-control" name="username">
+                                        <label for="school" class="form-control-label">School Name</label>
+                                        <input type="user" id="school" class="form-control" name="school_name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="firstname" class="form-control-label">First Name</label>
-                                        <input type="user" id="firstname" class="form-control" name="user_firstname">
+                                        <label for="city" class="form-control-label">City</label>
+                                        <input type="user" id="city" class="form-control" name="city">
                                     </div>
                                     <div class="form-group">
-                                        <label for="user" class="form-control-label">Last Name</label>
-                                        <input type="user" id="user" class="form-control" name="user_lastname">
+                                        <label for="phone" class="form-control-label">School Phone</label>
+                                        <input type="number" id="phone" class="form-control" name="school_phone">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email" class="form-control-label">Email</label>
-                                        <input type="email" id="email" class="form-control" name="user_email">
+                                        <label for="schoolinfo" class="form-control-label">School info</label>
+                                        <br>
+                                        <textarea type="text" name="school_bio" id="schoolinfo" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="form-control-label">Password</label>
@@ -134,27 +135,21 @@
                                             password</label>
                                         <input type="password" id="confirm_password" class="form-control">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="bio" class="form-control-label">Bio</label>
-                                        <br>
-                                        <textarea type="text" name="user_bio" id="bio" class="form-control"></textarea>
-                                    </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
                                         User</button>
                                 </form>
                                 <?php
                                     if(isset($_POST['register'])){
-                                        $username = $_POST['username'];
-                                        $userfirstname = $_POST['user_firstname'];
-                                        $userlastname = $_POST['user_lastname'];
-                                        $useremail = $_POST['user_email'];
-                                        $userpassword = $_POST['user_password'];
-                                        $userbio = $_POST['user_bio'];
+                                        $schoolname = $_POST['school_name'];
+                                        $city = $_POST['city'];
+                                        $schoolphone = $_POST['school_phone'];
+                                        $schoolinfo = $_POST['school_info'];
+                                        $schoolpassword = $_POST['school_password'];
                                         session_start();
                                         require_once 'classes/User.php';
 
                                         //call the function to login
-                                        $result = save_user($userfullname, $userfirstname, $userlastname, $useremail, $userpassword, $userbio);
+                                        $result = save_user($schoolname, $city, $schoolphone, $schoolinfo, $schoolpassword);
                                     }
                                     ?>
                             </div>

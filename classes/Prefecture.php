@@ -2,7 +2,7 @@
 
 require_once "Config.php";
 
-class User extends Config {
+class Prefecture extends Config {
 
     public function login($username, $password) {
         $hashed_password = md5($password);
@@ -12,7 +12,7 @@ class User extends Config {
         if($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             $_SESSION['user_id'] = $row['user_id'];
-            echo "<script>window.location.replace('users.php');</script>";
+            echo "<script>window.location.replace('prefectures.php');</script>";
         }else {
             echo "<p class='text-danger'>Invalid Username or Password</p>";
         }
@@ -21,7 +21,7 @@ class User extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM users ORDER BY user_id ASC";
+        $sql = "SELECT * FROM prefectures ORDER BY updated_at DESC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -38,7 +38,7 @@ class User extends Config {
 
     public function selectOne($id){
         // query
-        $sql = "SELECT * FROM users WHERE user_id=$id";
+        $sql = "SELECT * FROM prefectures WHERE prefecture_id=$id";
         // execute or run the query
         $result = $this->conn->query($sql);
 
@@ -49,12 +49,12 @@ class User extends Config {
         }
     }
 
-        public function save($username, $password, $email, $firstname, $lastname, $bio, $status) {
+        public function save($prefecturename) {
 
             //md5がパスワードをコンピュータが決めるコード
             $new_password = md5($password);
-            $sql = "INSERT INTO users(username, email, password, firstname, lastname, bio, status)
-                    VALUES('$username', '$email', '$new_password', '$firstname', '$lastname', '$bio', '$status')";
+            $sql = "INSERT INTO prefectures(prefecture_name)
+                    VALUES('$prefecturename')";
                     // excute or the query
                     $result = $this->conn->query($sql);
 
@@ -66,9 +66,8 @@ class User extends Config {
 
        
     }
-    public function update($id, $username, $email, $firstname, $lastname) {
-        $sql = "UPDATE users SET username='$username', email='$email', firstname='$firstname',
-                lastname='$lastname' WHERE user_id=$id";
+    public function update($id, $prefecturename) {
+        $sql = "UPDATE prefectures SET prefecture_name='$prefecturename' WHERE prefecture_id=$id";
                 // excute or run the query
                 $result = $this->conn->query($sql);
                 if($result) {
@@ -79,7 +78,7 @@ class User extends Config {
     }
 
     public function delete($id) {
-        $sql = "DELETE FROM users WHERE user_id=$id";
+        $sql = "DELETE FROM prefectures WHERE prefecture_id=$id";
         // execute or the query
         $result = $this->conn->query($sql);
 
