@@ -21,7 +21,7 @@ class User extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM schools ORDER BY updated_at DESC";
+        $sql = "SELECT * FROM schools ORDER BY school_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -38,7 +38,7 @@ class User extends Config {
 
     public function selectOne($id){
         // query
-        $sql = "SELECT * FROM schools WHERE user_id=$id";
+        $sql = "SELECT * FROM schools WHERE school_id=$id";
         // execute or run the query
         $result = $this->conn->query($sql);
 
@@ -53,7 +53,7 @@ class User extends Config {
 
             //md5がパスワードをコンピュータが決めるコード
             $new_password = md5($password);
-            $sql = "INSERT INTO schools(school_name, school_phone, schoolinfo, city)
+            $sql = "INSERT INTO schools(school_name, school_phone, school_info, city)
                     VALUES('$schoolname', '$schoolphone', '$schoolinfo', '$city')";
                     // excute or the query
                     $result = $this->conn->query($sql);

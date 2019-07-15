@@ -22,6 +22,12 @@ class Config {
 
         return $this->conn;
     }
+    public function redirect_js($url)
+    {
+        // echo "<script>window.location.replace('$url')</script>";
+        echo "<script>window.location.href='$url';</script>";
+        exit;
+    }
 
 }
 

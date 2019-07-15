@@ -23,34 +23,35 @@
                     <div class="card-body">
                         <form method="post">
                             <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Your username">
+                                <input type="text" name="username" class="form-control" placeholder="Your Username">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Your password">
+                                <input type="password" name="password" class="form-control" placeholder="Your Password">
                             </div>
                             <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="login">LOG
                                 IN</button>
                             <p class="float-right mt-3 text-muted">Don't have an account?
-                                <strong><a href="" class="text-decoration-none text-dark">Sign up</a></strong>
+                                <strong><a href="#" class="text-decoration-none text-dark">Sign up</a></strong>
                             </p>
                         </form>
                         <?php
-                            session_start();
-                            require_once "classes/User.php";
+                                session_start();
+                                require_once "classes/User.php";
 
-                            $user = new User;
+                                $user = new User;
 
-                            if(isset($_POST['login'])) {
-                                $username = $_POST['username'];
-                                $password = $_POST['password'];
+                                if(isset($_POST['login'])) {
+                                    $username = $_POST['username'];
+                                    $password = $_POST['password'];
 
-                                $user->login($username, $password);
-                            }
-                        ?>
+                                    $user->login($username, $password);
+                                }
+                            ?>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Optional JavaScript -->

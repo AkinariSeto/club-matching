@@ -82,7 +82,10 @@
                             </div>
                             <!-- Signin btn -->
                             <div class="dorne-signin-btn">
-                                <a href="#">Sign in  or Register</a>
+                                <a href="../login.php">Sign in</a>
+                            </div>
+                            <div class="dorne-signin-btn">
+                                <a href="../add_users.php">Register</a>
                             </div>
                             <!-- Add listings btn -->
                             <div class="dorne-add-listings-btn">
@@ -118,8 +121,8 @@
                                         <input type="user" id="firstname" class="form-control" name="user_firstname">
                                     </div>
                                     <div class="form-group">
-                                        <label for="user" class="form-control-label">Last Name</label>
-                                        <input type="user" id="user" class="form-control" name="user_lastname">
+                                        <label for="lastname" class="form-control-label">Last Name</label>
+                                        <input type="user" id="lastname" class="form-control" name="user_lastname">
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="form-control-label">Email</label>

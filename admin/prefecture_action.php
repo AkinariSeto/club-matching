@@ -1,13 +1,13 @@
 <?php
-    require_once "classes/Prefecture.php";
+    require_once "../classes/Prefecture.php";
 
     // create instance
     $prefecture = new Prefecture;
 
 
     if($_GET['action'] == 'add') {
-        $prefecturename = $_POST['prefecturename'];
-        $result = $ci->save($prefecturename);
+        $prefecturename = $_POST['prefecture_name'];
+        $result = $prefecture->save($prefecturename);
 
         if($result) {
             echo "<script>window.location.replace('prefectures.php');</script>";

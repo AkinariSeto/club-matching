@@ -21,7 +21,7 @@ class Prefecture extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM prefectures ORDER BY updated_at DESC";
+        $sql = "SELECT * FROM prefectures ORDER BY prefecture_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array

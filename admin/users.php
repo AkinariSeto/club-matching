@@ -95,14 +95,14 @@ require_once "../classes/User.php";
                             </div>
                             <!-- Signin Register btn -->
                             <div class="dorne-signin-btn">
-                                <a href="../users/register.php">Register</a>
+                                <a href="add_users.php">Register</a>
                             </div>
                             <div class="dorne-signin-btn">
-                                <a href="../users/login.php">Sign in</a>
+                                <a href="../login.php">Sign in</a>
                             </div>
                             <!-- sign out btn -->
                             <div class="dorne-signin-btn">
-                                <a href="../users/logout.php">Sign out</a>
+                                <a href="../logout.php">Sign out</a>
                             </div>
                             <!-- Add listings btn -->
                             <div class="dorne-add-listings-btn">
@@ -150,7 +150,7 @@ require_once "../classes/User.php";
                                         echo "<td>" .$row['lastname']."</td>";
                                         echo "<td>" .$row['bio']."</td>";
                                         echo "<td>
-                                        <a href='edit_user.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_users.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
                                     <a href='user_action.php?action=delete&user_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>add_schools</title>
+    <title>Add Schools</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -97,7 +97,6 @@
     <!-- ***** Header Area End ***** -->
 
 <!-- section-start -->
-
     <section id="posts">
         <div class="container">
             <div class="row">
@@ -105,13 +104,17 @@
                     <div class="card mt-5">
                         <div class="card-body">
                             <div class="container">
-                                <form class="my-5" method="POST">
+                                <form class="my-5" method="POST" action="school_action.php?action=add">
                                     <div class="card-header">
                                     <h4>Add Schools</h4>
                                     </div>
                                     <div class="form-group">
                                         <label for="school" class="form-control-label">School Name</label>
                                         <input type="user" id="school" class="form-control" name="school_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="prefecture" class="form-control-label">Prefecture Name</label>
+                                        <input type="user" id="prefecture" class="form-control" name="prefecture_name">
                                     </div>
                                     <div class="form-group">
                                         <label for="city" class="form-control-label">City</label>
@@ -124,34 +127,11 @@
                                     <div class="form-group">
                                         <label for="schoolinfo" class="form-control-label">School info</label>
                                         <br>
-                                        <textarea type="text" name="school_bio" id="schoolinfo" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password" class="form-control-label">Password</label>
-                                        <input type="password" id="password" class="form-control" name="user_password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirm_password" class="form-control-label">Confirm
-                                            password</label>
-                                        <input type="password" id="confirm_password" class="form-control">
+                                        <textarea type="text" name="school_info" id="schoolinfo" class="form-control"></textarea>
                                     </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
-                                        User</button>
+                                        Schools</button>
                                 </form>
-                                <?php
-                                    if(isset($_POST['register'])){
-                                        $schoolname = $_POST['school_name'];
-                                        $city = $_POST['city'];
-                                        $schoolphone = $_POST['school_phone'];
-                                        $schoolinfo = $_POST['school_info'];
-                                        $schoolpassword = $_POST['school_password'];
-                                        session_start();
-                                        require_once 'classes/User.php';
-
-                                        //call the function to login
-                                        $result = save_user($schoolname, $city, $schoolphone, $schoolinfo, $schoolpassword);
-                                    }
-                                    ?>
                             </div>
                         </div>
                     </div>

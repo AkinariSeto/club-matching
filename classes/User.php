@@ -12,12 +12,21 @@ class User extends Config {
         if($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             $_SESSION['user_id'] = $row['user_id'];
-            echo "<script>window.location.replace('users.php');</script>";
-        }else {
-            echo "<p class='text-danger'>Invalid Username or Password</p>";
+            
+            if ($result->num_rows > 0) {
+                if ($row['status'] == 'admin') {
+                    $this->redirect_js("admin/users.php");
+                }else {
+                    $this->redirect_js("user/index.php");
+                }
+                // header("Location: user/index.php");
+            } else {
+                echo 'Username and Password error.';
+            }
+        } else {
+            echo 'Username and Password error';
         }
-        }
-    
+    }
 
     public function selectALL() {
         // query

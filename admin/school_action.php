@@ -1,5 +1,5 @@
 <?php
-    require_once "classes/School.php";
+    require_once "../classes/School.php";
 
     // create instance
     $school = new School;
@@ -13,7 +13,7 @@
         $result = $school->save($schoolname, $schoolphone, $schoolinfo, $city);
 
         if($result) {
-            echo "<script>window.location.replace('schoolss.php');</script>";
+            echo "<script>window.location.replace('schools.php');</script>";
         }else {
             echo "Error!!";
         }

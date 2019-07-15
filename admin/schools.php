@@ -1,5 +1,5 @@
 <?php
-require_once "../classes/Schools.php";
+require_once "../classes/School.php";
  // create the instance/object
  $schools = new School;
  ?>

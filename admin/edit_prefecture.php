@@ -136,8 +136,8 @@ $get_prefecture = $prefecture->selectOne($id);
                                     </div>
                                     <div class="form-group">
                                         <label>Prefecture Name</label>
-                                        <input type="text" name="prefecturename" class="form-control"
-                                            value="<?php echo $get_club['prefecture_name']; ?>">
+                                        <input type="text" name="prefecture_name" class="form-control"
+                                            value="<?php echo $get_prefecture['prefecture_name']; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>
                                 </form>

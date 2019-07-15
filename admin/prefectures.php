@@ -135,7 +135,7 @@ require_once "../classes/Prefecture.php";
                                         echo "<td>" .$row['prefecture_id']."</td>";
                                         echo "<td>" .$row['prefecture_name']."</td>";
                                         echo "<td>
-                                        <a href='edit_prefecture.php?club_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_prefecture.php?prefecture_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
                                     <a href='prefecture_action.php?action=delete&prefecture_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'
