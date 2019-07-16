@@ -105,7 +105,7 @@
                     <div class="card mt-5">
                         <div class="card-body">
                             <div class="container">
-                                <form class="my-5" method="POST">
+                                <form class="my-5" method="POST" action="skill_level_action.php?action=add">
                                     <div class="card-header">
                                     <h4>Add Skill Level</h4>
                                     </div>
@@ -116,16 +116,6 @@
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
                                         Club Interests</button>
                                 </form>
-                                <?php
-                                    if(isset($_POST['register'])){
-                                        $levelname = $_POST['level_name'];
-                                        session_start();
-                                        require_once 'classes/Skill_level.php';
-
-                                        //call the function to login
-                                        $result = save_skill_levels($levelname);
-                                    }
-                                    ?>
                             </div>
                         </div>
                     </div>

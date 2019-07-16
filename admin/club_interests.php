@@ -133,7 +133,7 @@ require_once "../classes/Club_interest.php";
                                         $id = $row['ci_id'];
                                         echo "<tr>";
                                         echo "<td>" .$row['ci_id']."</td>";
-                                        echo "<td>" .$row['ciname']."</td>";
+                                        echo "<td>" .$row['ci_name']."</td>";
                                         echo "<td>
                                         <a href='edit_club_interests.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>

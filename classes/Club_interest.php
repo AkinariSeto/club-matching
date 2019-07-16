@@ -2,7 +2,7 @@
 
 require_once "Config.php";
 
-class Club extends Config {
+class Club_interests extends Config {
 
     public function login($username, $password) {
         $hashed_password = md5($password);
@@ -21,7 +21,7 @@ class Club extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM club_interests ORDER BY updated_at DESC";
+        $sql = "SELECT * FROM club_interests ORDER BY ci_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -51,8 +51,6 @@ class Club extends Config {
 
         public function save($ciname) {
 
-            //md5がパスワードをコンピュータが決めるコード
-            $new_password = md5($password);
             $sql = "INSERT INTO club_interests(ci_name)
                     VALUES('$ciname')";
                     // excute or the query

@@ -10,7 +10,8 @@
         $schoolphone = $_POST['school_phone'];
         $schoolinfo = $_POST['school_info'];
         $city = $_POST['city'];
-        $result = $school->save($schoolname, $schoolphone, $schoolinfo, $city);
+        $prefecture = $_POST['prefecture_name'];
+        $result = $school->save($schoolname, $schoolphone, $schoolinfo, $city, $prefecture);
 
         if($result) {
             echo "<script>window.location.replace('schools.php');</script>";

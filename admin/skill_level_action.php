@@ -1,5 +1,5 @@
 <?php
-    require_once "classes/Skill_level.php";
+    require_once "../classes/Skill_level.php";
 
     // create instance
     $level = new Level;

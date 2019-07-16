@@ -136,7 +136,7 @@ require_once "../classes/School.php";
                                         $id = $row['school_id'];
                                         echo "<tr>";
                                         echo "<td>" .$row['school_id']."</td>";
-                                        echo "<td>" .$row['school name']."</td>";
+                                        echo "<td>" .$row['school_name']."</td>";
                                         echo "<td>" .$row['school_phone']."</td>";
                                         echo "<td>" .$row['school_info']."</td>";
                                         echo "<td>" .$row['city']."</td>";

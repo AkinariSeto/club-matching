@@ -113,8 +113,22 @@
                                         <input type="user" id="school" class="form-control" name="school_name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="prefecture" class="form-control-label">Prefecture Name</label>
-                                        <input type="user" id="prefecture" class="form-control" name="prefecture_name">
+                                        <label>Prefecture Name</label>
+                                        <select name="prefecture_name" id="prefecture" class="form-control">
+                                        <?php
+                                            require_once "../classes/Prefecture.php";
+
+                                            $prefecture = new Prefecture;
+                                            $get_prefectures = $prefecture->selectALL();
+                                            foreach($get_prefectures as $key => $row) {
+                                                $prefecture_id = $row['prefecture_id'];
+                                                $prefecture_name = $row['prefecture_name'];
+                                                echo"<option value='$prefecture_id'>$prefecture_name</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        </div>
+                                        <!-- <input type="user" id="prefecture" class="form-control" name="prefecture_name"> -->
                                     </div>
                                     <div class="form-group">
                                         <label for="city" class="form-control-label">City</label>

@@ -1,12 +1,12 @@
 <?php
-    require_once "classes/Club_interests.php";
+    require_once "../classes/Club_interest.php";
 
     // create instance
     $ci = new Club_interests;
 
 
     if($_GET['action'] == 'add') {
-        $ciname = $_POST['ciname'];
+        $ciname = $_POST['ci_name'];
         $result = $ci->save($ciname);
 
         if($result) {
@@ -28,7 +28,7 @@
     }
     elseif($_GET['action'] == 'delete') {
         $ci_id = $_GET['ci_id'];
-        $result = $ci->delete($ci_id);
+        $result = $ci_id->delete($ci_id);
         if($result) {
             echo "<script>window.location.replace('club_interests.php');</script>";
         }

@@ -105,26 +105,16 @@
                     <div class="card mt-5">
                         <div class="card-body">
                             <div class="container">
-                                <form class="my-5" method="POST">
+                                <form class="my-5" method="POST" action="sport_action.php?action=add">
                                     <div class="card-header">
                                     <h4>Add Sports</h4>
                                     </div>
                                     <div class="form-group">
                                         <label for="sport" class="form-control-label">Sports Name</label>
-                                        <input type="user" id="sport" class="form-control" name="sports_name">
+                                        <input type="text" id="sport" class="form-control" name="sports_name">
                                     </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add Sports</button>
                                 </form>
-                                <?php
-                                    if(isset($_POST['register'])){
-                                        $sportname = $_POST['sport_name'];
-                                        session_start();
-                                        require_once 'classes/Sport.php';
-
-                                        //call the function to login
-                                        $result = save_club_interests($ciname);
-                                    }
-                                    ?>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 require_once "Config.php";
 
-class User extends Config {
+class School extends Config {
 
     public function login($username, $password) {
         $hashed_password = md5($password);
@@ -49,12 +49,10 @@ class User extends Config {
         }
     }
 
-        public function save($schoolname, $schoolphone, $schoolinfo, $city) {
+        public function save($schoolname, $schoolphone, $schoolinfo, $city, $prefecture) {
 
-            //md5がパスワードをコンピュータが決めるコード
-            $new_password = md5($password);
-            $sql = "INSERT INTO schools(school_name, school_phone, school_info, city)
-                    VALUES('$schoolname', '$schoolphone', '$schoolinfo', '$city')";
+            $sql = "INSERT INTO schools(school_name, school_phone, school_info, city, prefecture_id)
+                    VALUES('$schoolname', '$schoolphone', '$schoolinfo', '$city', '$prefecture')";
                     // excute or the query
                     $result = $this->conn->query($sql);
 

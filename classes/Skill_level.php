@@ -21,7 +21,7 @@ class Level extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM levels ORDER BY updated_at DESC";
+        $sql = "SELECT * FROM levels ORDER BY level_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -51,8 +51,6 @@ class Level extends Config {
 
         public function save($levelname) {
 
-            //md5がパスワードをコンピュータが決めるコード
-            $new_password = md5($password);
             $sql = "INSERT INTO levels(level_name)
                     VALUES('$levelname')";
                     // excute or the query
