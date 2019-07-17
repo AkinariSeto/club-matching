@@ -135,9 +135,9 @@ require_once "../classes/Club_interest.php";
                                         echo "<td>" .$row['ci_id']."</td>";
                                         echo "<td>" .$row['ci_name']."</td>";
                                         echo "<td>
-                                        <a href='edit_club_interests.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_club_interests.php?ci_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
-                                    <a href='club_intrests_action.php?action=delete&user_id=<?php echo $id; ?>'
+                                    <a href='club_interests_action.php?action=delete&ci_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'
                                         onclick='return confirm("Are you sure you want to delete?");'>Delete</a>
                                     </td>

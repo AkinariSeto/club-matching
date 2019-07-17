@@ -136,8 +136,8 @@ $get_level = $level->selectOne($id);
                                     </div>
                                     <div class="form-group">
                                         <label>Skill Level Name</label>
-                                        <input type="text" name="levelname" class="form-control"
-                                            value="<?php echo $get_club['level_name']; ?>">
+                                        <input type="text" name="level_name" class="form-control"
+                                            value="<?php echo $get_level['level_name']; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>
                                 </form>

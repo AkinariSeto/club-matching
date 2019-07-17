@@ -1,6 +1,6 @@
 <?php
 
-require_once "../classes/Club_interests.php";
+require_once "../classes/Club_interest.php";
 
 // create an instance
 $ci = new Club_Interests;
@@ -130,14 +130,14 @@ $get_ci = $ci->selectOne($id);
                         <div class="card mt-5">
                             <div class="card-body">
                                 <form class="my-5" action="club_action.php?action=update" method="post">
-                                    <input type="hidden" name="club_id" value="<?php echo $_GET['club_id']; ?>">
+                                    <input type="hidden" name="ci_id" value="<?php echo $_GET['ci_id']; ?>">
                                     <div class="card-header">
                                         <h4>Edit Club Interests</h4>
                                     </div>
                                     <div class="form-group">
                                         <label>Club Interests Name</label>
-                                        <input type="text" name="ciname" class="form-control"
-                                            value="<?php echo $get_club['ci_name']; ?>">
+                                        <input type="text" name="ci_name" class="form-control"
+                                            value="<?php echo $get_ci['ci_name']; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>
                                 </form>

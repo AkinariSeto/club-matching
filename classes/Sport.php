@@ -65,7 +65,7 @@ class Sport extends Config {
        
     }
     public function update($id, $sportname) {
-        $sql = "UPDATE clubs SET sport_name='$sportname' WHERE sport_id=$id";
+        $sql = "UPDATE sports SET sport_name='$sportname' WHERE sport_id=$id";
                 // excute or run the query
                 $result = $this->conn->query($sql);
                 if($result) {

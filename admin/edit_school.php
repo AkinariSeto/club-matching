@@ -1,11 +1,11 @@
 <?php
 
-require_once "../classes/User.php";
+require_once "../classes/School.php";
 
 // create an instance
-$school = new School;
+$schools = new School;
 $id = $_GET['school_id'];
-$get_school = $school->selectOne($id);
+$get_schools = $schools->selectOne($id);
 
 ?>
 
@@ -137,25 +137,25 @@ $get_school = $school->selectOne($id);
                                     <div class="form-group">
                                         <label>School Name</label>
                                         <input type="text" name="schoolname" class="form-control"
-                                            value="<?php echo $get_school['school_name']; ?>">
+                                            value="<?php echo $get_schools['school_name']; ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label>School Phone</label>
                                         <input type="number" name="schoolphone" class="form-control"
-                                            value="<?php echo $get_school['school_phone']; ?>">
+                                            value="<?php echo $get_schools['school_phone']; ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label>School Info</label>
                                         <input type="text" name="schoolinfo" class="form-control"
-                                            value="<?php echo $get_school['school_info']; ?>">
+                                            value="<?php echo $get_schools['school_info']; ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label>City</label>
                                         <input type="text" name="city" class="form-control"
-                                            value="<?php echo $get_school['city']; ?>">
+                                            value="<?php echo $get_schools['city']; ?>">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>

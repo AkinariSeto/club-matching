@@ -135,7 +135,7 @@ require_once "../classes/Sport.php";
                                         echo "<td>" .$row['sport_id']."</td>";
                                         echo "<td>" .$row['sport_name']."</td>";
                                         echo "<td>
-                                        <a href='edit_sports.php?club_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_sports.php?sport_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
                                     <a href='sport_action.php?action=delete&sport_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'

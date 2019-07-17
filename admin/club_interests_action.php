@@ -28,7 +28,7 @@
     }
     elseif($_GET['action'] == 'delete') {
         $ci_id = $_GET['ci_id'];
-        $result = $ci_id->delete($ci_id);
+        $result = $ci->delete($ci_id);
         if($result) {
             echo "<script>window.location.replace('club_interests.php');</script>";
         }

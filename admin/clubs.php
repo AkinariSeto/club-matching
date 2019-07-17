@@ -1,5 +1,5 @@
 <?php
-require_once "../classes/Clubs.php";
+require_once "../classes/Club.php";
  // create the instance/object
  $clubs = new Club;
  ?>
@@ -133,7 +133,7 @@ require_once "../classes/Clubs.php";
                                         $id = $row['club_id'];
                                         echo "<tr>";
                                         echo "<td>" .$row['club_id']."</td>";
-                                        echo "<td>" .$row['clubname']."</td>";
+                                        echo "<td>" .$row['club_name']."</td>";
                                         echo "<td>
                                         <a href='edit_clubs.php?club_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>

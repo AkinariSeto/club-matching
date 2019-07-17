@@ -136,7 +136,7 @@ $get_sport = $sport->selectOne($id);
                                     </div>
                                     <div class="form-group">
                                         <label>Sport Name</label>
-                                        <input type="text" name="sportname" class="form-control"
+                                        <input type="text" name="sport_name" class="form-control"
                                             value="<?php echo $get_sport['sport_name']; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>

@@ -105,7 +105,7 @@
                     <div class="card mt-5">
                         <div class="card-body">
                             <div class="container">
-                                <form class="my-5" method="POST">
+                                <form class="my-5" method="POST" action="club_action.php?action=add">
                                     <div class="card-header">
                                     <h4>Add Clubs</h4>
                                     </div>
@@ -116,16 +116,6 @@
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
                                         Club</button>
                                 </form>
-                                <?php
-                                    if(isset($_POST['register'])){
-                                        $clubname = $_POST['club_name'];
-                                        session_start();
-                                        require_once 'classes/Club.php';
-
-                                        //call the function to login
-                                        $result = save_club($clubname);
-                                    }
-                                    ?>
                             </div>
                         </div>
                     </div>

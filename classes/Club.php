@@ -21,7 +21,7 @@ class Club extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM clubs ORDER BY updated_at DESC";
+        $sql = "SELECT * FROM club ORDER BY club_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -38,7 +38,7 @@ class Club extends Config {
 
     public function selectOne($id){
         // query
-        $sql = "SELECT * FROM clubs WHERE club_id=$id";
+        $sql = "SELECT * FROM club WHERE club_id=$id";
         // execute or run the query
         $result = $this->conn->query($sql);
 
@@ -51,9 +51,7 @@ class Club extends Config {
 
         public function save($clubname) {
 
-            //md5がパスワードをコンピュータが決めるコード
-            $new_password = md5($password);
-            $sql = "INSERT INTO clubs(club_name)
+            $sql = "INSERT INTO club(club_name)
                     VALUES('$clubname')";
                     // excute or the query
                     $result = $this->conn->query($sql);
@@ -67,7 +65,7 @@ class Club extends Config {
        
     }
     public function update($id, $clubname) {
-        $sql = "UPDATE clubs SET club_name='$clubname' WHERE club_id=$id";
+        $sql = "UPDATE club SET club_name='$clubname' WHERE club_id=$id";
                 // excute or run the query
                 $result = $this->conn->query($sql);
                 if($result) {
@@ -78,7 +76,7 @@ class Club extends Config {
     }
 
     public function delete($id) {
-        $sql = "DELETE FROM clubs WHERE club_id=$id";
+        $sql = "DELETE FROM club WHERE club_id=$id";
         // execute or the query
         $result = $this->conn->query($sql);
 

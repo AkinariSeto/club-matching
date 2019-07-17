@@ -21,7 +21,7 @@ class Level extends Config {
 
     public function selectALL() {
         // query
-        $sql = "SELECT * FROM levels ORDER BY level_id ASC";
+        $sql = "SELECT * FROM skill_level ORDER BY level_id ASC";
         // execute or the query
         $result = $this-> conn->query($sql);
         // create an empty array
@@ -38,7 +38,7 @@ class Level extends Config {
 
     public function selectOne($id){
         // query
-        $sql = "SELECT * FROM levels WHERE level_id=$id";
+        $sql = "SELECT * FROM skill_level WHERE level_id=$id";
         // execute or run the query
         $result = $this->conn->query($sql);
 
@@ -51,7 +51,7 @@ class Level extends Config {
 
         public function save($levelname) {
 
-            $sql = "INSERT INTO levels(level_name)
+            $sql = "INSERT INTO skill_level(level_name)
                     VALUES('$levelname')";
                     // excute or the query
                     $result = $this->conn->query($sql);
@@ -65,7 +65,7 @@ class Level extends Config {
        
     }
     public function update($id, $levelname) {
-        $sql = "UPDATE levels SET level_name='$levelname' WHERE level_id=$id";
+        $sql = "UPDATE skill_level SET level_name='$levelname' WHERE level_id=$id";
                 // excute or run the query
                 $result = $this->conn->query($sql);
                 if($result) {
@@ -76,7 +76,7 @@ class Level extends Config {
     }
 
     public function delete($id) {
-        $sql = "DELETE FROM levels WHERE level_id=$id";
+        $sql = "DELETE FROM skill_level WHERE level_id=$id";
         // execute or the query
         $result = $this->conn->query($sql);
 

@@ -65,7 +65,7 @@ class Club_interests extends Config {
        
     }
     public function update($id, $ciname) {
-        $sql = "UPDATE clubs SET ci_name='$ciname' WHERE ci_id=$id";
+        $sql = "UPDATE club_interests SET ci_name='$ciname' WHERE ci_id=$id";
                 // excute or run the query
                 $result = $this->conn->query($sql);
                 if($result) {

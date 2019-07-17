@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="level" class="form-control-label">Level Name</label>
-                                        <input type="user" id="level" class="form-control" name="level_name">
+                                        <input type="text" id="level" class="form-control" name="level_name">
                                     </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
                                         Club Interests</button>

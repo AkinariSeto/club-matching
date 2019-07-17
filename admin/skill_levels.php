@@ -1,7 +1,7 @@
 <?php
 require_once "../classes/Skill_level.php";
  // create the instance/object
- $levels = new Level;
+ $level = new Level;
  ?>
 
 
@@ -126,16 +126,16 @@ require_once "../classes/Skill_level.php";
                                 </thead>
                                 <tbody>
                                     <?php
-                                $get_levels = $levels->selectAll();
+                                $get_level = $level->selectAll();
 
-                                if($get_levels) {
-                                    foreach($get_levels as $key => $row) {
+                                if($get_level) {
+                                    foreach($get_level as $key => $row) {
                                         $id = $row['level_id'];
                                         echo "<tr>";
                                         echo "<td>" .$row['level_id']."</td>";
                                         echo "<td>" .$row['level_name']."</td>";
                                         echo "<td>
-                                        <a href='edit_skill_level.php?club_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='edit_skill_level.php?level_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                                         ?>
                                     <a href='skill_level_action.php?action=delete&level_id=<?php echo $id; ?>'
                                         class='btn btn-danger btn-sm'

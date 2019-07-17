@@ -30,7 +30,7 @@
         $level_id = $_GET['level_id'];
         $result = $level->delete($level_id);
         if($result) {
-            echo "<script>window.location.replace('skil_levels.php');</script>";
+            echo "<script>window.location.replace('skill_levels.php');</script>";
         }
 
     }
