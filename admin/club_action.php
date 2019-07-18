@@ -1,13 +1,18 @@
 <?php
     require_once "../classes/Club.php";
-
+    session_start();
+    $user_id = $_SESSION['user_id'];
     // create instance
     $clubs = new Club;
 
 
     if($_GET['action'] == 'add') {
         $clubname = $_POST['club_name'];
-        $result = $clubs->save($clubname);
+        $school = $_POST['school_name'];
+        $sport = $_POST['sport_name'];
+        $level = $_POST['level_name'];
+        $ci = $_POST['ci_name'];
+        $result = $clubs->save($clubname, $school, $sport, $level, $ci, $user_id);
 
         if($result) {
             echo "<script>window.location.replace('clubs.php');</script>";

@@ -49,10 +49,10 @@ class Club extends Config {
         }
     }
 
-        public function save($clubname) {
+        public function save($clubname, $school, $sport, $level, $ci, $user_id) {
 
-            $sql = "INSERT INTO club(club_name)
-                    VALUES('$clubname')";
+            $sql = "INSERT INTO club(club_name, school_id, sport_id, user_id, level_id, ci_id)
+                    VALUES('$clubname','$school','$sport','$user_id','$ci','$level')";
                     // excute or the query
                     $result = $this->conn->query($sql);
 

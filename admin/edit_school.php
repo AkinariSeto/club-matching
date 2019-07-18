@@ -139,7 +139,24 @@ $get_schools = $schools->selectOne($id);
                                         <input type="text" name="schoolname" class="form-control"
                                             value="<?php echo $get_schools['school_name']; ?>">
                                     </div>
+                                    <select name="prefecture" id="" class="form-control">
+                                        <?php
+                                        require_once "../classes/Prefecture.php";
 
+                                        $prefecture = new Prefecture;
+                                        $get_prefecture = $prefecture->selectAll();
+                                        foreach($get_prefecture as $key => $row) {
+                                            $prefecture_id = $row['prefecture_id'];
+                                            $prefecture_name = $row['prefecture_name'];
+                                        ?>
+                                        <option value="<?php echo $prefecture_id; ?>">
+                                        <?php if($get_prefecture['prefecture_id'] == $prefecture_id) echo "selected"; ?>>
+                                        <?php echo $prefecture_name; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                     <div class="form-group">
                                         <label>School Phone</label>
                                         <input type="number" name="schoolphone" class="form-control"

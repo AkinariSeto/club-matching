@@ -111,8 +111,72 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="club" class="form-control-label">Club Name</label>
-                                        <input type="user" id="club" class="form-control" name="club_name">
+                                        <input type="text" id="club" class="form-control" name="club_name">
                                     </div>
+                                    <div class="form-group">
+                                        <label>School Name</label>
+                                        <select name="school_name" id="school" class="form-control">
+                                        <?php
+                                            require_once "../classes/School.php";
+
+                                            $school = new School;
+                                            $get_school = $school->selectALL();
+                                            foreach($get_school as $key => $row) {
+                                                $school_id = $row['school_id'];
+                                                $school_name = $row['school_name'];
+                                                echo"<option value='$school_id'>$school_name</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Sport Name</label>
+                                        <select name="sport_name" id="sport" class="form-control">
+                                        <?php
+                                            require_once "../classes/Sport.php";
+
+                                            $sport = new Sport;
+                                            $get_sports = $sport->selectALL();
+                                            foreach($get_sports as $key => $row) {
+                                                $sport_id = $row['sport_id'];
+                                                $sport_name = $row['sport_name'];
+                                                echo"<option value='$sport_id'>$sport_name</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Skill Level</label>
+                                        <select name="level_name" id="level" class="form-control">
+                                        <?php
+                                            require_once "../classes/Skill_level.php";
+
+                                            $level = new Level;
+                                            $get_levels = $level->selectALL();
+                                            foreach($get_levels as $key => $row) {
+                                                $level_id = $row['level_id'];
+                                                $level_name = $row['level_name'];
+                                                echo"<option value='$level_id'>$level_name</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Club Interest</label>
+                                        <select name="ci_name" id="ci" class="form-control">
+                                        <?php
+                                            require_once "../classes/Club_interest.php";
+
+                                            $ci = new Club_interests;
+                                            $get_ci = $ci->selectALL();
+                                            foreach($get_ci as $key => $row) {
+                                                $ci_id = $row['ci_id'];
+                                                $ci_name = $row['ci_name'];
+                                                echo"<option value='$ci_id'>$ci_name</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        </div>
                                     <button class="btn btn-success btn-block" type="submit" name="register">Add
                                         Club</button>
                                 </form>

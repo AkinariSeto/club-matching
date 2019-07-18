@@ -139,6 +139,90 @@ $get_club = $club->selectOne($id);
                                         <input type="text" name="clubname" class="form-control"
                                             value="<?php echo $get_club['club_name']; ?>">
                                     </div>
+                                    <div class="form-group">
+                                    <label>School Name</label>
+                                    <select name="school" id="" class="form-control">
+                                        <?php
+                                        require_once "../classes/School.php";
+
+                                        $school = new School;
+                                        $get_school = $school->selectAll();
+                                        foreach($get_school as $key => $row) {
+                                            $school_id = $row['school_id'];
+                                            $school_name = $row['school_name'];
+                                        ?>
+                                        <option value="<?php echo $school_id; ?>">
+                                        <?php if($get_school['school_id'] == $school_id) echo "selected"; ?>>
+                                        <?php echo $school_name; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Sport Name</label>
+                                    <select name="sport" id="" class="form-control">
+                                        <?php
+                                        require_once "../classes/Sport.php";
+
+                                        $sport = new Sport;
+                                        $get_sport = $sport->selectAll();
+                                        foreach($get_sport as $key => $row) {
+                                            $sport_id = $row['sport_id'];
+                                            $sport_name = $row['sport_name'];
+                                        ?>
+                                        <option value="<?php echo $sport_id; ?>">
+                                        <?php if($get_sport['sport_id'] == $sport_id) echo "selected"; ?>>
+                                        <?php echo $sport_name; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Skill Level</label>
+                                    <select name="level" id="" class="form-control">
+                                        <?php
+                                        require_once "../classes/Skill_level.php";
+
+                                        $level = new Level;
+                                        $get_level = $level->selectAll();
+                                        foreach($get_level as $key => $row) {
+                                            $level_id = $row['level_id'];
+                                            $level_name = $row['level_name'];
+                                        ?>
+                                        <option value="<?php echo $level_id; ?>">
+                                        <?php if($get_level['level_id'] == $level_id) echo "selected"; ?>>
+                                        <?php echo $level_name; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Club Interest</label>
+                                    <select name="ci" id="" class="form-control">
+                                        <?php
+                                        require_once "../classes/Club_interest.php";
+
+                                        $ci = new Club_interests;
+                                        $get_ci = $ci->selectAll();
+                                        foreach($get_ci as $key => $row) {
+                                            $ci_id = $row['ci_id'];
+                                            $ci_name = $row['ci_name'];
+                                        ?>
+                                        <option value="<?php echo $ci_id; ?>">
+                                        <?php if($get_ci['ci_id'] == $ci_id) echo "selected"; ?>>
+                                        <?php echo $ci_name; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
                                     <button type="submit" class="btn btn-primary" name="add">Save</button>
                                 </form>
                             </div>
