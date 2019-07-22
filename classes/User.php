@@ -100,5 +100,14 @@ class User extends Config {
     }
 
 
+public function selectSearchResult($interest_id, $level_id, $prefecture_id)
+{
+    $sql = "SELECT * FROM clubs
+            INNER JOIN schools ON schools.school_id=clubs.school_id
+            WHERE schools.prefecture_id = $prefecture_id
+            AND clubs.interest_id = $interest_id
+            AND level_id = $level_id";
+}
+
 }
 

@@ -21,46 +21,42 @@
                         <h3 class="text-light text-center py-3">Register</h3>
                     </div>
                     <div class="card-body">
-                        <form method="post">
-                            <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Your username">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Your email">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="firstname" class="form-control" placeholder="Your first name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="lastname" class="form-control" placeholder="Your last name">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Your password">
-                            </div>
-                            <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="login">Register</button>
+                        <form method="post" action="admin/user_action.php?action=add">
+                        <div class="form-group">
+                                        <label for="user" class="form-control-label">User Name</label>
+                                        <input type="user" id="user" class="form-control" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstname" class="form-control-label">First Name</label>
+                                        <input type="user" id="firstname" class="form-control" name="user_firstname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastname" class="form-control-label">Last Name</label>
+                                        <input type="user" id="lastname" class="form-control" name="user_lastname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="form-control-label">Email</label>
+                                        <input type="email" id="email" class="form-control" name="user_email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="form-control-label">Password</label>
+                                        <input type="password" id="password" class="form-control" name="user_password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm_password" class="form-control-label">Confirm
+                                            password</label>
+                                        <input type="password" id="confirm_password" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bio" class="form-control-label">Bio</label>
+                                        <br>
+                                        <textarea type="text" name="user_bio" id="bio" class="form-control"></textarea>
+                                    </div>
+                            <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="register">Register</button>
                             <p class="float-right mt-3 text-muted">Don't have an account?
                                 <strong><a href="" class="text-decoration-none text-dark">Log in</a></strong>
                             </p>
                         </form>
-                        <?php
-                            session_start();
-                            require_once "classes/User.php";
-
-                            $user = new User;
-
-                            if(isset($_POST['register'])) {
-                                $username = $_POST['username'];
-                                $email = $_POST['email'];
-                                $firstname = $_POST['firstname'];
-                                $lastname = $_POST['lastname'];
-                                $password = $_POST['password'];
-
-                                $result = $user->save($username, $email, $firstname, $lastname, $password);
-                                if($result) {
-                                    echo "<script>window.location.replace('login.php');</script>";
-                                }
-                            }
-                        ?>
                     </div>
                 </div>
             </div>
