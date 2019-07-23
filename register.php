@@ -21,7 +21,7 @@
                         <h3 class="text-light text-center py-3">Register</h3>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="admin/user_action.php?action=add">
+                        <form method="post">
                         <div class="form-group">
                                         <label for="user" class="form-control-label">User Name</label>
                                         <input type="user" id="user" class="form-control" name="username">
@@ -54,9 +54,31 @@
                                     </div>
                             <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="register">Register</button>
                             <p class="float-right mt-3 text-muted">Don't have an account?
-                                <strong><a href="" class="text-decoration-none text-dark">Log in</a></strong>
+                                <strong><a href="login.php" class="text-decoration-none text-dark">Log in</a></strong>
                             </p>
                         </form>
+                        <?php
+                        if(isset($_POST['register'])) {
+                        $username = $_POST['username'];
+                        $email = $_POST['user_email'];
+                        $password = $_POST['user_password'];
+                        $firstname = $_POST['user_firstname'];
+                        $lastname = $_POST['user_lastname'];
+                        $bio = $_POST['user_bio'];
+                        $status = 'user';
+                        require_once "classes/User.php";
+
+                        $user = new User;
+
+                        $result = $user->save($username, $password, $email, $firstname, $lastname, $bio, $status);
+
+                        if($result) {
+                            echo "<script>window.location.replace('login.php');</script>";
+                        }else {
+                            echo "Error!!";
+                        }
+                    }
+                    ?>
                     </div>
                 </div>
             </div>

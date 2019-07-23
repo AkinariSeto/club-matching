@@ -31,7 +31,7 @@
                             <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="login">LOG
                                 IN</button>
                             <p class="float-right mt-3 text-muted">Don't have an account?
-                                <strong><a href="#" class="text-decoration-none text-dark">Sign up</a></strong>
+                                <strong><a href="register.php" class="text-decoration-none text-dark">Register</a></strong>
                             </p>
                         </form>
                         <?php

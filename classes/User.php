@@ -17,7 +17,7 @@ class User extends Config {
                 if ($row['status'] == 'admin') {
                     $this->redirect_js("admin/users.php");
                 }else {
-                    $this->redirect_js("user/index.php");
+                    $this->redirect_js("users/index.php");
                 }
                 // header("Location: user/index.php");
             } else {
@@ -100,14 +100,28 @@ class User extends Config {
     }
 
 
-public function selectSearchResult($interest_id, $level_id, $prefecture_id)
+public function selectSearchResult($interest_id, $level_id, $prefecture_id, $sport_id)
 {
-    $sql = "SELECT * FROM clubs
-            INNER JOIN schools ON schools.school_id=clubs.school_id
+    $sql = "SELECT * FROM club
+            INNER JOIN schools ON schools.school_id=club.school_id
+            INNER JOIN club_interests ON club_interests.interest_id=club.interest_id
+            INNER JOIN prefectures ON prefectures.prefecture_id=club.prefecture_id
+            INNER JOIN skill_level ON skill_level.level_id=club.level_id
             WHERE schools.prefecture_id = $prefecture_id
-            AND clubs.interest_id = $interest_id
-            AND level_id = $level_id";
+            AND club.ci_id = $interest_id
+            AND club.level_id = $level_id
+            AND club.sport_id = $sport_id";
+    // execute or the query
+    $result = $this->conn->query($sql);
+    // create an empty array
+    $rows = array();
+        while($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+      
 }
 
-}
+
 
