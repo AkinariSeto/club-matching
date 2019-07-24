@@ -104,8 +104,8 @@ public function selectSearchResult($interest_id, $level_id, $prefecture_id, $spo
 {
     $sql = "SELECT * FROM club
             INNER JOIN schools ON schools.school_id=club.school_id
-            INNER JOIN club_interests ON club_interests.interest_id=club.interest_id
-            INNER JOIN prefectures ON prefectures.prefecture_id=club.prefecture_id
+            INNER JOIN club_interests ON club_interests.ci_id=club.ci_id
+            INNER JOIN prefectures ON prefectures.prefecture_id=schools.prefecture_id
             INNER JOIN skill_level ON skill_level.level_id=club.level_id
             WHERE schools.prefecture_id = $prefecture_id
             AND club.ci_id = $interest_id

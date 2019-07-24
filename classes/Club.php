@@ -87,6 +87,32 @@ class Club extends Config {
         }
     }
 
+    public function selectClubsByUser($user_id) {
+        $sql = "SELECT * FROM club WHERE user_id=$user_id";
+        // execute or run the query
+        $result = $this->conn->query($sql);
+
+        if($result) {
+            return $result->fetch_assoc();
+        } elseif($result->conn->error) {
+            echo "Error" . $this->conn->error;
+        }
+    }
+    
+    public function saveInvite($club_id, $my_club_id, $date) {
+        $sql = "INSERT INTO club_invite(invited_club_id, club_id, date, status)
+                VALUES('$club_id', '$my_club_id', '$date','pending')";
+                $result = $this->conn->query($sql);
+
+                if($result) {
+                    echo "<script>window.location.replace('index.php');</script>";
+                } else {
+                    echo "Error: " . $this->conn->error;
+                }
+
+    }
+
+
 
 }
 

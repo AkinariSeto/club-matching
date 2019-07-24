@@ -1,8 +1,12 @@
+<?php
+
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Search</title>
+    <title>Schedule</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -114,77 +118,59 @@
                 <div class="col-12">
                     <div class="section-heading mt-5 text-center">
                         <span></span>
-                        <h4>Search Result</h4>
+                        <h4>Set A Schedule</h4>
                     </div>
                 </div>
             </div>
+            <form action="" method="post">
+            <input type="date" class="text-center form-control" id="start" name="schedule" min="2019-07-01" max="2050-12-31">
 
-            <div class="row">
-                <?php
-                    require_once "../classes/User.php";
-                    $sport_id = $_GET['sport'];
-                    $interest_id = $_GET['interest'];
-                    $prefecture_id = $_GET['prefecture'];
-                    $level_id = $_GET['level'];
-                    $user = new User;
-                    $result = $user->selectSearchResult($interest_id, $level_id, $prefecture_id, $sport_id);
-                    // print_r($result);
+            <button class="btn btn-success btn-block mt-3" type="submit" name="invite">Invite</button>
+            </form>
+            <?php
+                if(isset($_POST['invite'])){
+                    $date = $_POST['schedule'];
+                    $club_id = $_GET['club_id'];
+                    $user_id = $_SESSION['user_id'];
+                    require_once "../classes/Club.php";
+                    $club = new Club;
+                    $get_club = $club->selectClubsByUser($user_id);
+                    $my_club_id = $get_club['club_id'];
+                    $insert = $club->saveInvite($club_id, $my_club_id, $date);
+                }
+            ?>
+        </div>
+        </section>
 
-                    foreach($result as $key => $row){
-                        $club_id = $row['club_id'];
-                ?>
-                <div class="col-12 col-lg-6">
-                    <div class="single-feature-events-area d-sm-flex align-items-center wow fadeInUpBig"
-                        data-wow-delay="0.2s">
-                        <div class="feature-events-thumb">
-                            <img src="img/bg-img/event-1.jpg" alt="">
-                            <div class="date-map-area d-flex">
-                            </div>
-                        </div>
-                        <div class="feature-events-content">
-                            <h5><?php echo $row['club_name']; ?></h5>
-                            <h6><?php echo $row['school_name']; ?></h6>
-                            <h6><?php echo $row['ci_name']; ?></h6>
-                            <h6><?php echo $row['level_name']; ?></h6>
-                        </div>
-                        <div class="feature-events-details-btn">
-                            <a href="invite_club.php?club_id=<?php echo $club_id; ?>">+</a>
-                        </div>
+
+
+
+
+        <!-- ****** Footer Area Start ****** -->
+        <footer class="dorne-footer-area" style="background-color: #33FFDD">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-md-flex align-items-center justify-content-between">
+                        <p class="text-center">© 2019 Akinari Seto</p>
                     </div>
                 </div>
-                <?php
-                    }
-                ?>
             </div>
-        </div>
-    </section>
-    <!-- ***** Features Events Area End ***** -->
-
-    <!-- ****** Footer Area Start ****** -->
-    <footer class="dorne-footer-area" style="background-color: #33FFDD">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 d-md-flex align-items-center justify-content-between">
-                    <p class="text-center">© 2019 Akinari Seto</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- ****** Footer Area End ****** -->
+        </footer>
+        <!-- ****** Footer Area End ****** -->
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
