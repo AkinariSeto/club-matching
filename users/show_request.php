@@ -1,20 +1,21 @@
 <?php
+require_once "../classes/Club.php";
+ // create the instance/object
+ session_start();
+ $user_id=$_SESSION['user_id'];
+ $club_invite = new Club;
+ $get_my_club = $club_invite->selectClubsByUser($user_id);
+ $my_club_id = $get_my_club['club_id'];
+ 
+ ?>
 
-require_once "../classes/Prefecture.php";
 
-// create an instance
-$prefecture = new Prefecture;
-$id = $_GET['prefecture_id'];
-$get_prefecture = $prefecture->selectOne($id);
-
-?>
-
-
+ 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Edit Prefecture</title>
+    <title>Schedule</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,25 +23,21 @@ $get_prefecture = $prefecture->selectOne($id);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body>
 
     <!-- Core Stylesheet -->
     <link href="../assets/style.css" rel="stylesheet">
 
     <!-- Responsive CSS -->
     <link href="../assets/css/responsive/responsive.css" rel="stylesheet">
-    </head>
+</head>
 
-    <body>
-        <!-- Preloader
-<div id="preloader">
-    <div class="dorne-load"></div>
-</div> -->
 
- <!-- ***** Search Form Area ***** -->
- <div class="dorne-search-form d-flex align-items-center">
+
+</head>
+
+<body>
+   <!-- ***** Search Form Area ***** -->
+   <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -79,13 +76,13 @@ $get_prefecture = $prefecture->selectOne($id);
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Display anything<i
                                             class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="../users/index.php">Home</a>
-                                        <a class="dropdown-item" href="users.php">Users</a>
-                                        <a class="dropdown-item" href="schools.php">Schools</a>
-                                        <a class="dropdown-item" href="clubs.php">Clubs</a>
-                                        <a class="dropdown-item" href="sports.php">Sports</a>
-                                        <a class="dropdown-item" href="club_interests.php">Club Interests</a>
-                                        <a class="dropdown-item" href="prefectures.php">Prefectures</a>
+                                    <a class="dropdown-item" href="index.php">Home</a>
+                                        <a class="dropdown-item" href="../admin/users.php">Users</a>
+                                        <a class="dropdown-item" href="../admin/schools.php">Schools</a>
+                                        <a class="dropdown-item" href="../admin/clubs.php">Clubs</a>
+                                        <a class="dropdown-item" href="../admin/sports.php">Sports</a>
+                                        <a class="dropdown-item" href="../admin/club_interests.php">Club Interests</a>
+                                        <a class="dropdown-item" href="../admin/prefectures.php">Prefectures</a>
                                     </div>
                                 </li>
                             </ul>
@@ -108,24 +105,55 @@ $get_prefecture = $prefecture->selectOne($id);
     </header>
     <!-- ***** Header Area End ***** -->
 
-        <section id="posts">
+
+
+    <section id="posts">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card mt-5">
-                            <div class="card-body">
-                                <form class="my-5" action="prefecture_action.php?action=update" method="post">
-                                    <input type="hidden" name="prefecture_id" value="<?php echo $_GET['prefecture_id']; ?>">
-                                    <div class="card-header">
-                                        <h4>Edit Prefecture</h4>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Prefecture Name</label>
-                                        <input type="text" name="prefecture_name" class="form-control"
-                                            value="<?php echo $get_prefecture['prefecture_name']; ?>">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" name="add">Save</button>
-                                </form>
+                <div class="row" style="margin-top: 60px;">
+                    <div class="col mt-5">
+                        <div class="card-body">
+                            <div class="container">
+                                <div>
+                                    <table class="table table-striped table-borderless table-hover my-5">
+                                        <div class="card-header">
+                                            <h4>Show Request</h4>
+                                        </div>
+                                        <thead>
+                                            <th>Club</th>
+                                            <th>School</th>
+                                            <th>Prefecture</th>
+                                            <th>Skill Level</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                           
+                                $get_club_invite = $club_invite->selectAllRequest($my_club_id);
+
+                                if($get_club_invite) {
+                                    foreach($get_club_invite as $key => $row) {
+                                        $id = $row['invite_id'];
+                                        echo "<tr>";
+                                        echo "<td>" .$row['club_name']."</td>";
+                                        echo "<td>" .$row['school_name']."</td>";
+                                        echo "<td>" .$row['prefecture_name']."</td>";
+                                        echo "<td>" .$row['level_name']."</td>";
+                                        echo "<td>" .$row['date']."</td>";
+                                        echo "<td>" .$row['status']."</td>";
+                                        ?>
+                                            
+                                            </tr>
+                                            <?php
+
+                                    }
+                                }else {
+                                    echo "<tr><td colspan='7' class='text-center'>Nothing to show</td></tr>";
+                                }
+                                ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,8 +162,15 @@ $get_prefecture = $prefecture->selectOne($id);
         </section>
 
 
-        <!-- ****** Footer Area Start ****** -->
-        <footer class="dorne-footer-area" style="background-color: #33FFDD">
+
+
+
+
+
+
+
+    <!-- ****** Footer Area Start ****** -->
+    <footer class="dorne-footer-area" style="background-color: #33FFDD">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 d-md-flex align-items-center justify-content-between">

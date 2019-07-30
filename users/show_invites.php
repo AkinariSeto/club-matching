@@ -1,8 +1,20 @@
+<?php
+require_once "../classes/Club.php";
+ // create the instance/object
+ session_start();
+ $user_id=$_SESSION['user_id'];
+ $club_invite = new Club;
+ $get_my_club = $club_invite->selectClubsByUser($user_id);
+ $my_club_id = $get_my_club['club_id'];
+ 
+ ?>
+
+
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Edit Club</title>
+    <title>Show Invites</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,89 +39,74 @@
     <div class="dorne-load"></div>
 </div> -->
 
-        <!-- ***** Search Form Area ***** -->
-        <div class="dorne-search-form d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="search-close-btn" id="closeBtn">
-                            <i class="pe-7s-close-circle" aria-hidden="true"></i>
-                        </div>
-                        <form action="#" method="get">
-                            <input type="search" name="caviarSearch" id="search"
-                                placeholder="Search Your Desire Destinations or Events">
-                            <input type="submit" class="d-none" value="submit">
-                        </form>
+   <!-- ***** Search Form Area ***** -->
+   <div class="dorne-search-form d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-close-btn" id="closeBtn">
+                        <i class="pe-7s-close-circle" aria-hidden="true"></i>
                     </div>
+                    <form action="#" method="get">
+                        <input type="search" name="caviarSearch" id="search"
+                            placeholder="Search Your Desire Destinations or Events">
+                        <input type="submit" class="d-none" value="submit">
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- ***** Header Area Start ***** -->
-        <header class="header_area" id="header">
-            <div class="container-fluid h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100">
-                        <nav class="h-100 navbar navbar-expand-lg bg-dark">
-                            <a class="navbar-brand" href="../index.php"><img src="img/core-img/logo.png" alt=""></a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav"
-                                aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span
-                                    class="fa fa-bars"></span></button>
-                            <!-- Nav -->
-                            <div class="collapse navbar-collapse" id="dorneNav">
-                                <ul class="navbar-nav mr-auto" id="dorneMenu">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="../index.php">Home <span
-                                                class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore <i
-                                                class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="../index.php">Home</a>
-                                            <a class="dropdown-item" href="#">Explore</a>
-                                            <a class="dropdown-item" href="#">Listing</a>
-                                            <a class="dropdown-item" href="#">Single Listing</a>
-                                            <a class="dropdown-item" href="#">Contact</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings
-                                            <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                            <a class="dropdown-item" href="../index.php">Home</a>
-                                            <a class="dropdown-item" href="#">Explore</a>
-                                            <a class="dropdown-item" href="#">Listing</a>
-                                            <a class="dropdown-item" href="#">Single Listing</a>
-                                            <a class="dropdown-item" href="#">Contact</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
-                                    </li>
-                                </ul>
-                                <!-- Search btn -->
-                                <div class="dorne-search-btn">
-                                    <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i>
-                                        Search</a>
-                                </div>
-                                <!-- Signin btn -->
-                                <div class="dorne-signin-btn">
-                                    <a href="#">Sign in or Register</a>
-                                </div>
-                                <!-- Add listings btn -->
-                                <div class="dorne-add-listings-btn">
-                                    <a href="#" class="btn dorne-btn">+ Add Listings</a>
-                                </div>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area" id="header">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="h-100 navbar navbar-expand-lg bg-dark">
+                        <a class="navbar-brand" href="../index.php"><img src="img/core-img/logo.png" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav"
+                            aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span
+                                class="fa fa-bars"></span></button>
+                        <!-- Nav -->
+                        <div class="collapse navbar-collapse" id="dorneNav">
+                            <ul class="navbar-nav mr-auto" id="dorneMenu">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="../users/index.php">Home <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Display anything<i
+                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="index.php">Home</a>
+                                        <a class="dropdown-item" href="../admin/users.php">Users</a>
+                                        <a class="dropdown-item" href="../admin/schools.php">Schools</a>
+                                        <a class="dropdown-item" href="../admin/clubs.php">Clubs</a>
+                                        <a class="dropdown-item" href="../admin/sports.php">Sports</a>
+                                        <a class="dropdown-item" href="../admin/club_interests.php">Club Interests</a>
+                                        <a class="dropdown-item" href="../admin/prefectures.php">Prefectures</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Signin Register btn -->
+                            <div class="dorne-signin-btn">
+                                <a href="../register.php">Register</a>
                             </div>
-                        </nav>
-                    </div>
+                            <div class="dorne-signin-btn">
+                                <a href="../login.php">Sign in</a>
+                            </div>
+                            <!-- sign out btn -->
+                            <div class="dorne-signin-btn">
+                                <a href="../logout.php">Sign out</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
-        </header>
-        <!-- ***** Header Area End ***** -->
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
         <section id="posts">
             <div class="container">
@@ -120,36 +117,42 @@
                                 <div>
                                     <table class="table table-striped table-borderless table-hover my-5">
                                         <div class="card-header">
-                                            <h4>Display User</h4>
+                                            <h4>Show Invite</h4>
                                         </div>
                                         <thead>
-                                            <th>User name</th>
                                             <th>Club</th>
-                                            <th>Club Interest</th>
-                                            <th>Level</th>
+                                            <th>School</th>
+                                            <th>Prefecture</th>
+                                            <th>Skill Level</th>
                                             <th>Date</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody>
                                             <?php
-                                $get_ = $users->selectAll();
+                                           
+                                $get_club_invite = $club_invite->selectAllInvites($my_club_id);
 
-                                if($get_users) {
-                                    foreach($get_users as $key => $row) {
-                                        $id = $row['user_id'];
+                                if($get_club_invite) {
+                                    foreach($get_club_invite as $key => $row) {
+                                        $id = $row['invite_id'];
                                         echo "<tr>";
-                                        echo "<td>" .$row['user_id']."</td>";
-                                        echo "<td>" .$row['username']."</td>";
-                                        echo "<td>" .$row['email']."</td>";
-                                        echo "<td>" .$row['firstname']."</td>";
-                                        echo "<td>" .$row['lastname']."</td>";
-                                        echo "<td>" .$row['bio']."</td>";
+                                        echo "<td>" .$row['club_name']."</td>";
+                                        echo "<td>" .$row['school_name']."</td>";
+                                        echo "<td>" .$row['prefecture_name']."</td>";
+                                        echo "<td>" .$row['level_name']."</td>";
+                                        echo "<td>" .$row['date']."</td>";
+                                        echo "<td>" .$row['status']."</td>";
+                                        if($row['status'] == "pending"){
                                         echo "<td>
-                                        <a href='edit_users.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
+                                        <a href='invite_action.php?action=ACCEPT&invite_id=$id' class='btn btn-success btn-sm'>Accept</a>
+                                        <a href='invite_action.php?action=CANCEL&invite_id=$id' class='btn btn-danger btn-sm'>Cancel</a>
+                                        ";
+                                        }else{
+                                            echo "<td></td>";
+                                        }
+
                                         ?>
-                                            <a href='user_action.php?action=delete&user_id=<?php echo $id; ?>'
-                                                class='btn btn-danger btn-sm'
-                                                onclick='return confirm("Are you sure you want to delete?");'>Delete</a>
                                             </td>
                                             </tr>
                                             <?php

@@ -26,8 +26,8 @@ require_once "../classes/User.php";
 </head>
 
 <body>
-    <!-- ***** Search Form Area ***** -->
-    <div class="dorne-search-form d-flex align-items-center">
+   <!-- ***** Search Form Area ***** -->
+   <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -58,44 +58,27 @@ require_once "../classes/User.php";
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="../index.php">Home <span
+                                    <a class="nav-link" href="../users/index.php">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore <i
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Display anything<i
                                             class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="../index.php">Home</a>
-                                        <a class="dropdown-item" href="#">Explore</a>
-                                        <a class="dropdown-item" href="#">Listing</a>
-                                        <a class="dropdown-item" href="#">Single Listing</a>
-                                        <a class="dropdown-item" href="#">Contact</a>
+                                        <a class="dropdown-item" href="../users/index.php">Home</a>
+                                        <a class="dropdown-item" href="users.php">Users</a>
+                                        <a class="dropdown-item" href="schools.php">Schools</a>
+                                        <a class="dropdown-item" href="clubs.php">Clubs</a>
+                                        <a class="dropdown-item" href="sports.php">Sports</a>
+                                        <a class="dropdown-item" href="club_interests.php">Club Interests</a>
+                                        <a class="dropdown-item" href="prefectures.php">Prefectures</a>
                                     </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings <i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="../index.php">Home</a>
-                                        <a class="dropdown-item" href="#">Explore</a>
-                                        <a class="dropdown-item" href="#">Listing</a>
-                                        <a class="dropdown-item" href="#">Single Listing</a>
-                                        <a class="dropdown-item" href="#">Contact</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
                                 </li>
                             </ul>
-                            <!-- Search btn -->
-                            <div class="dorne-search-btn">
-                                <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-                            </div>
                             <!-- Signin Register btn -->
                             <div class="dorne-signin-btn">
-                                <a href="add_users.php">Register</a>
+                                <a href="../register.php">Register</a>
                             </div>
                             <div class="dorne-signin-btn">
                                 <a href="../login.php">Sign in</a>
@@ -103,10 +86,6 @@ require_once "../classes/User.php";
                             <!-- sign out btn -->
                             <div class="dorne-signin-btn">
                                 <a href="../logout.php">Sign out</a>
-                            </div>
-                            <!-- Add listings btn -->
-                            <div class="dorne-add-listings-btn">
-                                <a href="#" class="btn dorne-btn">+ Add Listings</a>
                             </div>
                         </div>
                     </nav>
@@ -126,6 +105,8 @@ require_once "../classes/User.php";
                                 <div class="card-header">
                                     <h4>Display User</h4>
                                 </div>
+                                <a href="add_users.php"><button class="btn btn-success btn-block" type="submit" name="">Add
+                                        User</button></a>
                                 <thead>
                                     <th>ID</th>
                                     <th>Username</th>
@@ -196,19 +177,6 @@ require_once "../classes/User.php";
     <!-- Active JS -->
     <script src="../assets/js/active.js"></script>
 
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

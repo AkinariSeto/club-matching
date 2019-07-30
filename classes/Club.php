@@ -112,6 +112,74 @@ class Club extends Config {
 
     }
 
+    public function selectAllInvites($club_id) {
+        // query
+        $sql = "SELECT * FROM club_invite
+                INNER JOIN club ON club.club_id=club_invite.club_id
+                INNER JOIN schools ON schools.school_id=club.school_id
+                INNER JOIN prefectures ON schools.prefecture_id=prefectures.prefecture_id
+                INNER JOIN skill_level ON skill_level.level_id=club.level_id
+                WHERE club_invite.invited_club_id=$club_id";
+        // execute or the query
+        $result = $this-> conn->query($sql);
+        // create an empty array
+        $rows = array();
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+    
+    public function acceptInvite($invite_id)
+    {
+        $sql = "UPDATE club_invite SET status='accepted' WHERE invite_id=$invite_id";
+        // excute or run the query
+        $result = $this->conn->query($sql);
+        if($result) {
+            return true;
+        }else {
+            echo "Error: " . $this->conn->error;
+        }
+    }
+
+    public function cancelInvite($invite_id)
+    {
+        $sql = "UPDATE club_invite SET status='cancelled' WHERE invite_id=$invite_id";
+        // excute or run the query
+        $result = $this->conn->query($sql);
+        if($result) {
+            return true;
+        }else {
+            echo "Error: " . $this->conn->error;
+        }
+    }
+
+    public function selectAllRequest($club_id) {
+        // query
+        $sql = "SELECT * FROM club_invite
+                INNER JOIN club ON club.club_id=club_invite.club_id
+                INNER JOIN schools ON schools.school_id=club.school_id
+                INNER JOIN prefectures ON schools.prefecture_id=prefectures.prefecture_id
+                INNER JOIN skill_level ON skill_level.level_id=club.level_id
+                WHERE club_invite.club_id=$club_id";
+        // execute or the query
+        $result = $this-> conn->query($sql);
+        // create an empty array
+        $rows = array();
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }

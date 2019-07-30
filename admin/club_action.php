@@ -9,10 +9,11 @@
     if($_GET['action'] == 'add') {
         $clubname = $_POST['club_name'];
         $school = $_POST['school_name'];
+        $user = $_POST['user_name'];
         $sport = $_POST['sport_name'];
         $level = $_POST['level_name'];
         $ci = $_POST['ci_name'];
-        $result = $clubs->save($clubname, $school, $sport, $level, $ci, $user_id);
+        $result = $clubs->save($clubname, $school, $sport, $level, $ci, $user);
 
         if($result) {
             echo "<script>window.location.replace('clubs.php');</script>";
